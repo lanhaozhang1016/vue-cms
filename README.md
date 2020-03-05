@@ -1,18 +1,25 @@
-# 这是一个NB的项目
-
-## 牛不牛逼， 用心去感受，每一行代码中的诗情雅意
-
-### 我们是有灵魂程序员，所以，我们的代码富有诗意；
-
-#### 丫的，实在编不下去了,哈哈哈
+# 这是一个基于vue的项目 是一个包含新闻页面 、购物页面等等方面的应用程序
+##其中的数据来源于数据库，是假数据，是为了用来渲染页面
+### 希望通过此次项目能学到呢更多的知识
+#### 接下来，我将介绍该项目的一些知识点和经验总结
 
 ## [主流开源协议之间有何异同？](https://www.zhihu.com/question/19568896)
+
+
+## 第一次把本地项目托管到github上
+1. 首先需要注册一个github账号
+2. 创建一个空的仓储 new repository 
+3. 在本地项目中操作命令行 git add .    git commit -m "init my project" 将项目存储到本地仓库.git文件夹中
+4. 然后按照github的提示操作两条命令行
+5. note: 此时git报错-fatal: HttpRequestException encountered.
+6. 原因： Github禁用了TLS v1.0 and v1.1，必须更新Windows的git凭证管理器才可以 
+7. 解决方案：下载安装GCMW-1.20.0.exe （最新版即可）
+
 
 ## 用(传统方式)命令行把修改过后的代码上传到码云？？？
 1. git add .
 2. git commit -m "提交信息"
 3. git push
-
 ## 制作首页App组件
 1. 完成 Header 区域，使用的是 Mint-UI 中的Header组件
 2. 制作底部的 Tabbar 区域，使用的是 MUI 的 Tabbar.html
