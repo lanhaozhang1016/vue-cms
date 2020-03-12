@@ -6,11 +6,38 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 // 2.1 导入 vue-resource
-// import VueResource from 'vue-resource'
+import VueResource from 'vue-resource'
 // // 2.2 安装 vue-resource
-// Vue.use(VueResource)
+Vue.use(VueResource)
+//时间全局过滤器
+Vue.filter('dateFormat',function(dateStr,pattern=""){
+  var dt = new Date(dateStr);
 
+  var year = dt.getFullYear();
 
+  var month = (dt.getMonth() + 1).toString().padStart(2, '0');
+
+  var day = (dt.getDate()).toString().padStart(2, '0');
+
+  if(pattern.toLowerCase() === 'yyy-mm-dd'){
+
+    return `${year}-${month}-${day}`
+
+  }else{
+
+    var hour = (dt.getHours()).toString().padStart(2, '0');
+
+    var minutes = (dt.getMinutes()).toString().padStart(2, '0');
+
+    var seconds = (dt.getSeconds()).toString().padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`
+
+  }
+
+})
+
+Vue.http.options.root = 'http://www.liulongbin.top:3005'
 // 导入 MUI 的样式
 import './lib/mui/css/mui.min.css'
 // // 导入扩展图标样式

@@ -6,13 +6,13 @@
 
 
     <!-- 中间的 路由 router-view 区域 -->
-<!--		<transition>-->
-<!--			<router-view></router-view>-->
-<!--		</transition>-->
-	  <router-view></router-view>
+		<transition>
+			<router-view></router-view>
+		</transition>
+<!--	  <router-view></router-view>-->
 
     <!-- 底部 Tabbar 区域 -->
-    <nav class="mui-bar mui-bar-tab">
+    <nav class="mui-bar mui-bar-tab" >
 			<router-link class="mui-tab-item " to="/home">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
@@ -43,21 +43,20 @@
 <style lang="scss" scoped>
 	.app-container {
 		 padding-top: 40px;
-		 /*overflow-x: hidden;*/
+		 overflow-x: hidden;
 	}
-/*.v-enter {*/
-/*  opacity: 0;*/
-/*  transform: translateX(100%);*/
-/*}*/
- /* .v-leave-to {
-    opacity: 0;
-	transform: translateX(-100%);
-    position: absolute;
-  }
-*/
-/*.v-enter-active,
-.v-leave-active {
- transition: all 0.5s ease;
-}
-*/
+	.v-enter {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	.v-leave-to {
+		opacity: 0;
+		transform: translateX(-100%);
+		position: absolute;
+	}
+	.v-enter-active,
+	.v-leave-active {
+		transition: all 1s ease;
+	}
+
 </style>
