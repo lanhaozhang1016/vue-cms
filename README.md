@@ -18,7 +18,10 @@
 1. git add .
 2. git commit -m "提交信息"
 3. git push
-
+## 入口文件代码编写
+## 路由文件代码编写 
+1. 导入各种文件 样式 模块
+2. 创建vm实例
 ## 制作首页App组件
 1. 完成 Header 区域，使用的是 Mint-UI 中的Header组件
 2. 制作底部的 Tabbar 区域，使用的是 MUI 的 Tabbar.html 
