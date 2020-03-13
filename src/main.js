@@ -38,6 +38,7 @@ Vue.filter('dateFormat',function(dateStr,pattern=""){
 })
 
 Vue.http.options.root = 'http://www.liulongbin.top:3005'
+Vue.http.options.emulateJSON = true;//post请求第三个参数
 // 导入 MUI 的样式
 import './lib/mui/css/mui.min.css'
 // // 导入扩展图标样式
@@ -45,10 +46,11 @@ import './lib/mui/css/icons-extra.css'
 
 
 // 按需导入 Mint-UI 中的组件  固定在顶端的头部 以及轮播图
-import { Header, Swipe, SwipeItem } from 'mint-ui'
+import { Header, Swipe, SwipeItem, Button } from 'mint-ui'
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 
 // 1.3 导入自己的 router.js 路由模块

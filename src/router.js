@@ -5,8 +5,8 @@ import HomeContainer from './components/tabbar/HomeContainer.vue'
 import MemberContainer from './components/tabbar/MemberContainer.vue'
 import ShopcarContainer from './components/tabbar/ShopcarContainer.vue'
 import SearchContainer from './components/tabbar/SearchContainer.vue'
-import NewsList from './news/NewsList.vue'
-import NewsInfo from './news/NewsInfo.vue'
+import NewsList from './components/news/NewsList.vue'
+import NewsInfo from './components/news/NewsInfo.vue'
 // 3. 创建路由对象
 var router = new VueRouter({
   routes: [ // 配置路由规则
