@@ -63,7 +63,7 @@
 2. 底部跟着动画一起跑 以上两个问题是因为页面出现了滚动条，因为做动画的时候，切换组件，另一个组件已经在一边等着了
 3. 动画从同一个方向进入离开 将v-enter 和v-leave-to 的样式分开写
 4. 动画先水平进入，然后垂直上升 在v-leave-to的样式里面加position： absolute
-## 改造新闻资讯路由链接
+## 六宫图改造之新闻资讯子页面
 ### 由a标签改至router-link 并且将href属性改为to，且对应的值改为跳转的组件
 ## 制作新闻列表页面组件
 1. 首先使用MUI中的media-list.html
@@ -98,3 +98,32 @@
  + 如果调用 getComments 方法重新刷新评论列表的话，可能只能得到 最后一页的评论，前几页的评论获取不到 因为如果此时的pageIndex > 1 则重=重新渲染 前面的数据就都获取不到了
  + 换一种思路： 当评论成功后，在客户端，手动拼接出一个 最新的评论对象，然后 调用 数组的 unshift 方法， 把最新的评论，追加到  data 中 comments 的开头；这样，就能 完美实现刷新评论列表的需求；
 5. 最后需要把textarea里面的内容清空 等待下一次发表评论
+### 六宫格改造之图片分享子页面
+1. 首先是将a->router-link 并且设置to属性
+2. 创建图片分享子组件
+3. 在路由文件中添加桥梁
+4. 制作图片分享页面的结构和样式
+###制作图片列表组件 结构和样式
+### 顶部滑动条制作
+1. 首先在mui中找到并使用tab-top-webview-main.html的相应结构
++ 使用过程中发现的坑以及解决方法
+ + 图片分类不在期望的位置 而是覆盖在顶部的标题上 检查元素 去掉它全屏的类 mui-fullscreen 即可 
+ + 图片分类不可以正常触发滑动 检查MUI官方文档 scroll组件属于js组件 它需要手动导入mui.js文件 并且按照官方文档手动初始化
+  + ../../lib/mui/js/mui.js 
+   + 此时报错 bundle.js:33915 Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+   + 经过我们合理的推测，觉得，可能是 mui.js 中用到了 'caller', 'callee', and 'arguments' 东西，但是， webpack 打包好的 bundle.js 中，默认是启用严格模式的，所以，这两者冲突了；
+   + 解决方案： 1. 把 mui.js 中的 非严格 模式的代码改掉；但是不现实； 2. 把 webpack 打包时候的严格模式禁用掉；
+   + 最终，我们选择了移除严格模式： 使用这个插件 babel-plugin-transform-remove-strict-mode
+   + 使用方法 [babel-plugin-transform-remove-strict-mode](https://github.com/genify/babel-plugin-transform-remove-strict-mode)
+  + 初始化scroll控件：
+    mui('.mui-scroll-wrapper').scroll({
+    	deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    });
+   + 刚进入 图片分享页面的时候， 滑动条无法正常工作，必须要重新刷新一下才可以正常滑动
+   + 分析： 初始化scroll控件 要使用scroll() 必须要等DOM元素加载完毕 注意是DOM元素，不是vm的数据 所以得在mounted()钩子函数中调用
+    经过我们认真的分析，发现， 如果要初始化 滑动条，必须要等 DOM 元素加载完毕，所以，我们把 初始化 滑动条 的代码，搬到了 mounted 生命周期函数中；
+   + 滑动条问题解决了，结果发现tabbar 无法正常切换页面了 
+   + 解决方法不知道是哪里来的 可能是经过百般尝试的出来的经验 
+   + 我们需要把 每个 tabbar 按钮的 样式中  `mui-tab-item` 重新改一下名字 并且在改名字之前要把所有对应的样式都重新手动写出来
+2. 获取所有分类，并渲染 分类列表；
+
