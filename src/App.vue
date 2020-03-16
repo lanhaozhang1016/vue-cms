@@ -2,7 +2,7 @@
   <div class="app-container">
 
     <!-- 顶部 Header 区域 -->
-    <mt-header fixed title="花样购商城·Vue项目"></mt-header>
+    <mt-header class="mainHeader" fixed title="花样购商城·Vue项目"></mt-header>
 
 
     <!-- 中间的 路由 router-view 区域 -->
@@ -41,10 +41,14 @@
 
 
 <style lang="scss" scoped>
+	.mainHeader{
+		z-index: 99;
+	}
 	.app-container {
 		 padding-top: 40px;
-		padding-bottom: 60px;
+		padding-bottom: 55px;
 		 overflow-x: hidden;
+
 	}
 	.v-enter {
 		opacity: 0;

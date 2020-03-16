@@ -51,8 +51,12 @@ Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
-
-
+import { Lazyload } from 'mint-ui';
+Vue.use(Lazyload);
+//导入vue-preview 缩略图组件
+import VuePreview from 'vue-preview'
+// defalut install
+Vue.use(VuePreview)
 // 1.3 导入自己的 router.js 路由模块
 import router from './router.js'
 

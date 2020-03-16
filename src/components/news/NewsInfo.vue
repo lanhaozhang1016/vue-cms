@@ -23,7 +23,7 @@
         data(){
             return {
                 id: this.$route.params.id,
-                newsInfo: []
+                newsInfo: {}
             }
         },
         created(){
