@@ -93,6 +93,7 @@
                 width: 100%;
                 vertical-align: middle;
             }
+            //懒加载
             img[lazy="loading"] {
                 width: 40px;
                 height: 300px;

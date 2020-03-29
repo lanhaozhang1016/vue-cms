@@ -40,7 +40,7 @@
                 })
             },
             getMoreComments(){
-                this.pageIndex += 1
+                this.pageIndex ++;
                 this.getComments()
             },
             postComments (){

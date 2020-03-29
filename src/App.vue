@@ -2,7 +2,7 @@
   <div class="app-container">
 
     <!-- 顶部 Header 区域 -->
-    <mt-header class="mainHeader" fixed title="花样购商城·Vue项目"></mt-header>
+    <mt-header class="mainHeader" fixed title="移动端购物商城·Vue项目"></mt-header>
 
 
     <!-- 中间的 路由 router-view 区域 -->
@@ -23,7 +23,7 @@
 			</router-link>
 			<router-link class="mui-tab-item-new" to="/shopcar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-					<span class="mui-badge">0</span>
+					<span class="mui-badge" id="badge">0</span>
 				</span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
@@ -37,6 +37,10 @@
 </template>
 
 <script>
+	// window.onload = function (){
+	// 	console.dir( document.getElementById('badge'));
+	// }
+
 </script>
 
 

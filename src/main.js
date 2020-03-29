@@ -25,18 +25,18 @@ Vue.filter('dateFormat',function(dateStr,pattern=""){
 
   }else{
 
-    var hour = (dt.getHours()).toString().padStart(2, '0');
+    var hours = (dt.getHours()).toString().padStart(2, '0');
 
     var minutes = (dt.getMinutes()).toString().padStart(2, '0');
 
     var seconds = (dt.getSeconds()).toString().padStart(2, '0');
 
-    return `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 
   }
 
 })
-
+//设置请求数据库的根地址 以及post请求编码方式
 Vue.http.options.root = 'http://www.liulongbin.top:3005'
 Vue.http.options.emulateJSON = true;//post请求第三个参数
 // 导入 MUI 的样式
@@ -51,6 +51,7 @@ Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
+//懒加载组件导入
 import { Lazyload } from 'mint-ui';
 Vue.use(Lazyload);
 //导入vue-preview 缩略图组件

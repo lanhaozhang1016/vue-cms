@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <counter :num="5" :id="1"></counter>
+    <counter :num="4" :id="2"></counter>
+    <counter :num="3" :id="3" class="main"></counter>
+</div>
+
+<script>
+    Vue.prototype.bus = new Vue();
+
+    Vue.component('counter', {
+        props:['num', 'id'],
+        template: '<div @click="handelClick">初始值：{{num}}, 修改后：{{number}}</div>',
+        data() {
+            return {
+                number: this.num,
+            }
+        },
+        methods: {
+            handelClick: function() {
+                this.bus.$emit('change', this.num,3)
+            }
+        },
+        mounted: function () {
+            const that = this;
+
+            this.bus.$on('change', function (msg, index) {
+
+                console.log(index,that.id,that.number);
+                that.id === index? that.number = msg : ''
+            })
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            total: 0
+        },
+    })
+</script>
+<style>
+    .main {
+        color: red;
+    }
+</style>
+</body>
+</html>
